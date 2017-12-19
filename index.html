@@ -1,0 +1,79 @@
+<!-- 
+alexytlee.azurewebsites.net
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Cryptocurrency</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        var url = "https://api.coinmarketcap.com/v1/ticker/";
+        var strResult = "";
+
+        $.getJSON(url, function(data) {
+
+            data.sort(function(a, b) {
+                return b.price_usd - a.price_usd;
+            });
+
+            strResult += "<h1 class='text-center'>Cryptocurrency Tracker</h1>";
+            strResult += "<table width ='100%' class='table table-condensed table-hover'>";
+            strResult += "<tr><th>Rank</th><th>Name</th><th>Price (USD)</th><th>Market Cap</th><th>Available Supply</th><th>Total Supply</th><th>1H Δ</th><th>24H Δ</th><th>7D Δ</th><th>Last Updated</th></tr>"
+
+            for (var i = 0; i < data.length; i++) {
+                strResult += "<tr><td>" + (i + 1) + "</td>";
+                strResult += "<td>" + data[i].name + "</td>";
+                strResult += "<td>$" + parseFloat(data[i].price_usd).toFixed(2) + "</td>";
+                strResult += "<td>" + data[i].market_cap_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
+                strResult += "<td>" + data[i].available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
+                strResult += "<td>" + data[i].total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>"
+
+                if (data[i].percent_change_1h < 0) {
+                    strResult += "<td><span class='bg-danger text-white'>" + data[i].percent_change_1h + "%</span></td>";
+                } else {
+                    strResult += "<td>" + data[i].percent_change_1h + "%</td>";
+                }
+
+                if (data[i].percent_change_24h < 0) {
+                    strResult += "<td><span class='bg-danger text-white'>" + data[i].percent_change_24h + "%</span></td>";
+                } else {
+                    strResult += "<td>" + data[i].percent_change_24h + "%</td>"
+                }
+
+                if (data[i].percent_change_7d < 0) {
+                    strResult += "<td><span class='bg-danger text-white'>" + data[i].percent_change_7d + "%</span></td>";
+                } else {
+                    strResult += "<td>" + data[i].percent_change_7d + "%</td>"
+                }
+
+                var date = new Date(data[i].last_updated * 1000);
+                var hours = date.getHours();
+                var minutes = "0" + date.getMinutes();
+                var seconds = "0" + date.getSeconds();
+                var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2)
+
+                strResult += "<td>" + formattedTime + "</td></tr>"
+            }
+
+            strResult += "</table>";
+            $("#divResult").html(strResult);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row"><img class="img-responsive" src="banner.png"></div>
+    </div>
+    <div id="divResult"></div>
+    <div class="container text-center">
+        <small>Alan, may you always find prosperity - 大佬</small>
+    </div>
+</body>
+
+</html>
