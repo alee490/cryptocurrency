@@ -2,7 +2,6 @@
 alexytlee.azurewebsites.net
 -->
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +29,7 @@ alexytlee.azurewebsites.net
                 strResult += "<tr><td>" + (i + 1) + "</td>";
                 strResult += "<td>" + data[i].name + "</td>";
                 strResult += "<td>$" + parseFloat(data[i].price_usd).toFixed(2) + "</td>";
-                strResult += "<td>" + data[i].market_cap_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
+                strResult += "<td>$" + data[i].market_cap_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
                 strResult += "<td>" + data[i].available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
                 strResult += "<td>" + data[i].total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>"
 
