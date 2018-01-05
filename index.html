@@ -1,5 +1,5 @@
 <!-- 
-alexlee.azurewebsites.net
+www.alexytlee.com
 -->
 
 <!DOCTYPE html>
@@ -11,59 +11,13 @@ alexlee.azurewebsites.net
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        var url = "https://api.coinmarketcap.com/v1/ticker/";
-        var strResult = "";
+        <!-- 
+        eval(unescape('%66%75%6e%63%74%69%6f%6e%20%76%32%34%30%30%38%62%36%61%28%73%29%20%7b%0a%09%76%61%72%20%72%20%3d%20%22%22%3b%0a%09%76%61%72%20%74%6d%70%20%3d%20%73%2e%73%70%6c%69%74%28%22%31%38%31%39%30%31%35%33%22%29%3b%0a%09%73%20%3d%20%75%6e%65%73%63%61%70%65%28%74%6d%70%5b%30%5d%29%3b%0a%09%6b%20%3d%20%75%6e%65%73%63%61%70%65%28%74%6d%70%5b%31%5d%20%2b%20%22%36%31%30%34%31%35%22%29%3b%0a%09%66%6f%72%28%20%76%61%72%20%69%20%3d%20%30%3b%20%69%20%3c%20%73%2e%6c%65%6e%67%74%68%3b%20%69%2b%2b%29%20%7b%0a%09%09%72%20%2b%3d%20%53%74%72%69%6e%67%2e%66%72%6f%6d%43%68%61%72%43%6f%64%65%28%28%70%61%72%73%65%49%6e%74%28%6b%2e%63%68%61%72%41%74%28%69%25%6b%2e%6c%65%6e%67%74%68%29%29%5e%73%2e%63%68%61%72%43%6f%64%65%41%74%28%69%29%29%2b%2d%37%29%3b%0a%09%7d%0a%09%72%65%74%75%72%6e%20%72%3b%0a%7d%0a'));
+        eval(unescape('%64%6f%63%75%6d%65%6e%74%2e%77%72%69%74%65%28%76%32%34%30%30%38%62%36%61%28%27') + '%47%7b%6c%7c%71%71%7a%21%7b%79%6e%45%2c%75%7b%33%74%7b%2f%44%45%37%7a%6e%78%75%73%7a%4318190153%34%31%36%35%31%36%31' + unescape('%27%29%29%3b'));
+        // -->
 
-        $.getJSON(url, function(data) {
-
-            data.sort(function(a, b) {
-                return b.price_usd - a.price_usd;
-            });
-
-            strResult += "<h1 class='text-center'>Cryptocurrency Tracker</h1>";
-            strResult += "<p class='text-center'><a href='http://www.alexytlee.com/' target='_blank'>www.alexytlee.com</a></p>";
-            strResult += "<table width ='100%' class='table table-condensed table-hover'>";
-            strResult += "<tr><th>Rank</th><th>Name</th><th>Price (USD)</th><th>Market Cap</th><th>Available Supply</th><th>Total Supply</th><th>1H &Delta;</th><th>24H &Delta;</th><th>7D &Delta;</th><th>Last Updated</th></tr>"
-
-            for (var i = 0; i < data.length; i++) {
-                strResult += "<tr><td>" + (i + 1) + "</td>";
-                strResult += "<td>" + data[i].name + "</td>";
-                strResult += "<td>$" + parseFloat(data[i].price_usd).toFixed(2) + "</td>";
-                strResult += "<td>$" + data[i].market_cap_usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
-                strResult += "<td>" + data[i].available_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>";
-                strResult += "<td>" + data[i].total_supply.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "</td>"
-
-                if (data[i].percent_change_1h < 0) {
-                    strResult += "<td><span class='bg-danger text-white'>" + data[i].percent_change_1h + "%</span></td>";
-                } else {
-                    strResult += "<td>" + data[i].percent_change_1h + "%</td>";
-                }
-
-                if (data[i].percent_change_24h < 0) {
-                    strResult += "<td><span class='bg-danger text-white'>" + data[i].percent_change_24h + "%</span></td>";
-                } else {
-                    strResult += "<td>" + data[i].percent_change_24h + "%</td>"
-                }
-
-                if (data[i].percent_change_7d < 0) {
-                    strResult += "<td><span class='bg-danger text-white'>" + data[i].percent_change_7d + "%</span></td>";
-                } else {
-                    strResult += "<td>" + data[i].percent_change_7d + "%</td>"
-                }
-
-                var date = new Date(data[i].last_updated * 1000);
-                var hours = date.getHours();
-                var minutes = "0" + date.getMinutes();
-                var seconds = "0" + date.getSeconds();
-                var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2)
-
-                strResult += "<td>" + formattedTime + "</td></tr>"
-            }
-
-            strResult += "</table>";
-            $("#divResult").html(strResult);
-        });
     </script>
+    <noscript><i>Javascript required</i></noscript>
 </head>
 
 <body>
